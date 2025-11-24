@@ -34,3 +34,4 @@ server/dist
 
 # Vercel
 .vercel
+.claude/
