@@ -93,7 +93,7 @@ Stable2Pay is a Point-of-Sale (POS) payment system built on [Stable Network](htt
 
 ```bash
 # Clone the repository
-git clone https://github.com/claimpilot/stable2pay.git
+git clone https://github.com/vizzzix/stable2pay.git
 cd stable2pay
 
 # Install frontend dependencies
