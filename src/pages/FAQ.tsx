@@ -102,7 +102,7 @@ export default function FAQ() {
             <p className="text-muted-foreground">
               Have more questions?{" "}
               <a
-                href="https://github.com/vizzzix/stablepay"
+                href="https://github.com/vizzzix/stable2pay"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-accent hover:underline"
