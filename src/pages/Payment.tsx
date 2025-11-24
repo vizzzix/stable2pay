@@ -9,7 +9,7 @@ import { TopBar } from "@/components/TopBar";
 import { api, Invoice } from "@/lib/api";
 import { useInvoiceWS } from "@/hooks/useInvoiceWS";
 import { formatAmountWithSymbol, formatAmount, getTimeRemaining, copyToClipboard } from "@/lib/format";
-import { Loader2, CheckCircle2, Clock, ExternalLink, AlertCircle, Copy, Info, PartyPopper } from "lucide-react";
+import { Loader2, CheckCircle2, Clock, ExternalLink, AlertCircle, Copy, Info, PartyPopper, Fuel } from "lucide-react";
 import { toast } from "sonner";
 import confetti from "canvas-confetti";
 
@@ -290,6 +290,30 @@ export default function Payment() {
                         <li>Send exactly <strong>{formatAmount(invoice.amount)} USDT</strong></li>
                         <li>To the address above</li>
                       </ol>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Faucet Notice */}
+              {!isPaid && !isExpired && (
+                <div className="p-4 bg-accent/5 rounded-lg border border-accent/20">
+                  <div className="flex items-start gap-3">
+                    <Fuel className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                    <div className="text-sm">
+                      <p className="font-medium text-foreground mb-1">Need gas for testnet?</p>
+                      <p className="text-muted-foreground mb-2">
+                        Your wallet must have at least 0.01 ETH and several transactions on Ethereum mainnet.
+                      </p>
+                      <a
+                        href="https://faucet.stable.xyz/faucet"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-accent hover:underline font-medium"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        Get testnet tokens from faucet
+                      </a>
                     </div>
                   </div>
                 </div>

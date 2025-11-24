@@ -6,11 +6,9 @@ export function formatAddress(address: string, chars = 6): string {
 // gUSDT has 18 decimals (native token on Stable Network)
 const GUSDT_DECIMALS = 18;
 
-// Add thousands separator (dot) to number string - only for numbers >= 10000
+// Add thousands separator (comma) - US/crypto standard
 function addThousandsSeparator(num: string): string {
-  // Don't add separator for numbers less than 10000
-  if (num.length < 5) return num;
-  return num.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  return num.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 export function formatAmount(amount: string | number, decimals = GUSDT_DECIMALS): string {
@@ -22,14 +20,14 @@ export function formatAmount(amount: string | number, decimals = GUSDT_DECIMALS)
     const whole = '0';
     const fraction = padded.slice(-decimals);
     const trimmed = fraction.replace(/0+$/, '') || '0';
-    return trimmed === '0' ? '0' : `0,${trimmed}`;
+    return trimmed === '0' ? '0' : `0.${trimmed}`;
   }
 
   const whole = numStr.slice(0, -decimals);
   const fraction = numStr.slice(-decimals).replace(/0+$/, '');
   const formattedWhole = addThousandsSeparator(whole);
 
-  return fraction ? `${formattedWhole},${fraction}` : formattedWhole;
+  return fraction ? `${formattedWhole}.${fraction}` : formattedWhole;
 }
 
 export function formatAmountWithSymbol(amount: string | number, symbol = 'USDT', decimals = GUSDT_DECIMALS): string {
